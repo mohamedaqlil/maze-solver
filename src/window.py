@@ -1,4 +1,5 @@
 from tkinter import Tk, BOTH, Canvas
+from drawing_utils import Line
 
 class Window:
   def __init__(self, width, height):
@@ -14,6 +15,10 @@ class Window:
   def redraw(self):
     self.__root.update_idletasks()  # Handle layout and idle updates
     self.__root.update()  # Redraw the entire window with any changes
+
+  def draw_line(self, line, fill_color):
+    # Call the line's draw method with our canvas
+    line.draw(self.__canvas, fill_color)
 
   def wait_for_close(self):
     self.__running = True
