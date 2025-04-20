@@ -1,25 +1,31 @@
 from window import Window
 from drawing_utils import Point, Line
+from cell import Cell
 
 def main():
     # Create a window
     window = Window(800, 600)  # width=800, height=600
     
-    # Create some point objects
-    p1 = Point(100, 100)
-    p2 = Point(200, 200)
-    p3 = Point(300, 100)
-    p4 = Point(400, 300)
+    # Create some cells with different wall configurations
+    # Parameters: left_wall, right_wall, top_wall, bottom_wall, x1, x2, y1, y2, win
     
-    # Create line objects using those points
-    line1 = Line(p1, p2)
-    line2 = Line(p2, p3)
-    line3 = Line(p3, p4)
+    # Cell with all walls
+    cell1 = Cell(True, True, True, True, 50, 150, 50, 150, window)
     
-    # Draw the lines with different colors
-    window.draw_line(line1, "red")
-    window.draw_line(line2, "blue")
-    window.draw_line(line3, "green")
+    # Cell with no left wall
+    cell2 = Cell(False, True, True, True, 200, 300, 50, 150, window)
+    
+    # Cell with no top wall
+    cell3 = Cell(True, True, False, True, 50, 150, 200, 300, window)
+    
+    # Cell with only right wall
+    cell4 = Cell(False, True, False, False, 200, 300, 200, 300, window)
+    
+    # Draw all cells
+    cell1.draw()
+    cell2.draw()
+    cell3.draw()
+    cell4.draw()
     
     # Wait for the window to close
     window.wait_for_close()

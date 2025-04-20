@@ -28,3 +28,6 @@ class Window:
 
   def close(self):
     self.__running = False
+
+  def create_line(self, *args, **kwargs):
+    return self.__canvas.create_line(*args, **kwargs)
