@@ -2,16 +2,23 @@ from tkinter import Tk, BOTH, Canvas
 from window import draw_line
 
 class Cell:
-  def __init__(self, has_left_wall, has_right_wall, has_top_wall, has_bottom_wall, _x1, _x2, _y1, _y2, _win):
-    self.has_left_wall = has_left_wall
-    self.has_right_wall = has_right_wall
-    self.has_top_wall = has_top_wall
-    self.has_bottom_wall = has_bottom_wall
-    self._x1 = _x1
-    self._x2 = _x2
-    self._y1 = _y1
-    self._y2 = _y2
-    self._win = _win
+  def __init__(self, i, j, x1, y1, cell_size_x, cell_size_y, win, 
+                 has_left_wall=True, has_right_wall=True, 
+                 has_top_wall=True, has_bottom_wall=True):
+        # Set default wall states
+        self.has_left_wall = has_left_wall
+        self.has_right_wall = has_right_wall
+        self.has_top_wall = has_top_wall
+        self.has_bottom_wall = has_bottom_wall
+
+        # Calculate pixel positions based on i, j, and maze attributes
+        self._x1 = x1 + j * cell_size_x
+        self._x2 = self._x1 + cell_size_x
+        self._y1 = y1 + i * cell_size_y
+        self._y2 = self._y1 + cell_size_y
+
+        # Store the window object
+        self._win = win
 
   def draw(self, fill_color="black"):
     if self.has_left_wall:
