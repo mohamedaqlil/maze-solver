@@ -1,5 +1,5 @@
 from tkinter import Tk, BOTH, Canvas
-from window import draw_line
+from window import Window
 
 class Cell:
   def __init__(self, i, j, x1, y1, cell_size_x, cell_size_y, win, 
@@ -25,21 +25,41 @@ class Cell:
       self._win.create_line(
       self._x1, self._y1, self._x1, self._y2, fill=fill_color, width=2
       )
+    else:
+        # Draw a white line where the left wall would be
+        self._win.create_line(
+            self._x1, self._y1, self._x1, self._y2, fill="white", width=2
+        )
 
     if self.has_right_wall:
       self._win.create_line(
       self._x2, self._y1, self._x2, self._y2, fill=fill_color, width=2
       )
+    else:
+        # Draw a white line where the right wall would be
+        self._win.create_line(
+            self._x2, self._y1, self._x2, self._y2, fill="white", width=2
+        )
 
     if self.has_top_wall:
       self._win.create_line(
       self._x1, self._y1, self._x2, self._y1, fill=fill_color, width=2
       )
+    else:
+        # Draw a white line where the top wall would be
+        self._win.create_line(
+            self._x1, self._y1, self._x2, self._y1, fill="white", width=2
+        )
 
     if self.has_bottom_wall:
       self._win.create_line(
       self._x1, self._y2, self._x2, self._y2, fill=fill_color, width=2
       )
+    else:
+       # Draw a white line where the bottom wall would be
+       self._win.create_line(
+          self._x1, self._y2, self._x2, self._y2, fill="white", width=2
+          )
 
   def draw_move(self, to_cell, undo=False):
     # Calculate center of current cell

@@ -1,4 +1,4 @@
-from cell import Cell, Wall
+from cell import Cell
 from window import Window
 import time
 import random
@@ -12,7 +12,7 @@ class Maze:
         num_cols,
         cell_size_x,
         cell_size_y,
-        win,
+        win=None,
     ):
     self.x1 = x1
     self.y1 = y1
@@ -21,6 +21,7 @@ class Maze:
     self.cell_size_x = cell_size_x
     self.cell_size_y = cell_size_y
     self.win = win
+    self._create_cells()
 
   def _create_cells(self):
     cells = []
@@ -49,3 +50,12 @@ class Maze:
   def _animate(self):
     self.win.redraw()  # Refresh the display
     time.sleep(0.05)   # Pause for 50 milliseconds
+
+  def _break_entrance_and_exit(self):
+    # Break the top wall of the top-left cell (entrance)
+    self._cells[0][0].has_top_wall = False
+    self._draw_cell(0, 0)
+    
+    # Break the bottom wall of the bottom-right cell (exit)
+    self._cells[self.num_rows-1][self.num_cols-1].has_bottom_wall = False
+    self._draw_cell(self.num_rows-1, self.num_cols-1)
