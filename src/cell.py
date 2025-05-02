@@ -4,7 +4,7 @@ from window import Window
 class Cell:
   def __init__(self, i, j, x1, y1, cell_size_x, cell_size_y, win, 
                  has_left_wall=True, has_right_wall=True, 
-                 has_top_wall=True, has_bottom_wall=True):
+                 has_top_wall=True, has_bottom_wall=True, visited=False):
         # Set default wall states
         self.has_left_wall = has_left_wall
         self.has_right_wall = has_right_wall
@@ -19,6 +19,8 @@ class Cell:
 
         # Store the window object
         self._win = win
+
+        self.visited = visited
 
   def draw(self, fill_color="black"):
     if self.has_left_wall:
