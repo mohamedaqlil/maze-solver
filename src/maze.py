@@ -107,3 +107,10 @@ class Maze:
 
        # Recursively call with the new position
        self._break_walls_r(next_i, next_j)
+
+  def _reset_cells_visited(self):
+    # Iterate through all cells in the maze
+    for i in range(self.num_rows):
+        for j in range(self.num_cols):
+            # Set visited to False for each cell
+            self._cells[i][j].visited = False

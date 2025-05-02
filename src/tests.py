@@ -42,6 +42,21 @@ class Tests(unittest.TestCase):
        self.assertEqual(m._cells[0][0].has_top_wall, False)
        # Check that the bottom-right cell has its bottom wall removed
        self.assertEqual(m._cells[num_rows-1][num_cols-1].has_bottom_wall, False)
+    
+    def test_reset_cells_visited(self):
+       num_cols = 12
+       num_rows = 9
+       maze = Maze(0, 0, num_rows, num_cols, 10, 10)
+
+       maze._cells[0][0].visited = True
+       maze._cells[1][2].visited = True
+       maze._cells[3][4].visited = True
+
+       maze._reset_cells_visited()
+       # Check that all cells' visited property is now False
+       for i in range(num_rows):
+          for j in range(num_cols):
+             self.assertFalse(maze._cells[i][j].visited)
 
 if __name__ == "__main__":
    unittest.main()
