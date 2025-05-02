@@ -2,20 +2,35 @@ from window import Window
 from drawing_utils import Point, Line
 from cell import Cell
 from maze import Maze
+import sys
+
 
 def main():
-    # Adjust these values as needed
-    num_rows = 10
-    num_cols = 10
-    window_width = 800
-    window_height = 600
-    cell_size_x = window_width // num_cols
-    cell_size_y = window_height // num_rows
-    
-    maze = Maze(num_rows, num_cols, window_width, window_height, cell_size_x, cell_size_y)
-    maze._create_cells()
-    maze._break_entrance_and_exit()
-    maze._win.mainloop()
+    num_rows = 12
+    num_cols = 16
+    margin = 50
+    screen_x = 800
+    screen_y = 600
+    cell_size_x = (screen_x - 2 * margin) / num_cols
+    cell_size_y = (screen_y - 2 * margin) / num_rows
 
-if __name__ == "__main__":
-    main()
+    sys.setrecursionlimit(10000)
+    win = Window(screen_x, screen_y)
+
+    maze = Maze(margin, margin, num_rows, num_cols, cell_size_x, cell_size_y, win, 10)
+    print("maze created")
+
+    # Generate the maze
+    maze._break_walls_r(0, 0)  # Start breaking walls from top-left
+    maze._break_entrance_and_exit()  # Create entrance and exit
+    maze._reset_cells_visited()  # Reset visited flags
+    
+    is_solvable = maze.solve()
+    if not is_solvable:
+        print("maze can not be solved!")
+    else:
+        print("maze solved!")
+    win.wait_for_close()
+
+
+main()
