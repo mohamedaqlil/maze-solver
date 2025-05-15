@@ -119,7 +119,7 @@ The solving animation draws red for path and gray for backtracking.
 ## Demo
 
 ```markdown
-![Maze generation and solving demo](demo)
+![Maze generation and solving demo](https://www.linkedin.com/posts/mohamedaqlil_python-bootdev-mazesolver-activity-7324563449965940736-LySA?utm_source=share&utm_medium=member_desktop&rcm=ACoAADPOQH0Ba0HWavqnXsQUrHBwJDoqTmwO_aI)
 ```
 
 ---
