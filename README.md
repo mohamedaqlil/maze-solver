@@ -118,9 +118,7 @@ The solving animation draws red for path and gray for backtracking.
 
 ## Demo
 
-```markdown
 ![Maze generation and solving demo](docs/demo.gif)
-```
 
 ---
 
