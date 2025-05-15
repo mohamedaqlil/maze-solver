@@ -45,7 +45,7 @@ Note: On Debian/Ubuntu you might need sudo apt install python3-tk.
 
 ⸻
 
-Usage
+## Usage
 
 Run with the default parameters:
 
@@ -67,7 +67,7 @@ Close the window (or hit ) to exit.
 
 ⸻
 
-Project Structure
+## Project Structure
 
 src/
 ├── cell.py          # Single-cell representation & drawing logic
@@ -80,7 +80,7 @@ src/
 
 ⸻
 
-Algorithms
+## Algorithms
 
 Phase	File & Function	Description
 Generation	maze._break_walls()	Recursive-Backtracker removes walls until every cell is visited
@@ -90,14 +90,14 @@ Each step calls window.redraw() so the animation stays fluent at ~20 FPS.
 
 ⸻
 
-Demo
+## Demo
 
 ![Maze generation & solving demo](demo)
 
 
 ⸻
 
-Contributing
+## Contributing
 
 Pull requests are welcome! If you have:
 	•	alternative algorithms (Prim, Kruskal, Wilson…)
@@ -108,7 +108,7 @@ open an issue first to discuss ✨.
 
 ⸻
 
-License
+## License
 
 Distributed under the MIT License.
 See the LICENSE file for full details.
